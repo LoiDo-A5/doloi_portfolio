@@ -5,10 +5,8 @@ export default function MyQuote() {
     <CustomCard title="My Quote">
       <div className="flex flex-col gap-2">
         <p className="text-sm">
-          &quot;The beautiful thing about learning is that nobody can take it
-          away from you&quot;
+          &quot;The only person you should try to be better than is the person you were yesterday.&quot;
         </p>
-        <p className="text-sm text-right">--- B.B King</p>
       </div>
     </CustomCard>
   );
