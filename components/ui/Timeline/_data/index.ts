@@ -7,7 +7,7 @@ export const experience = [
   },
   {
     id: 2,
-    title: "Software developer at DV KỸ THUẬT CÔNG NGHỆ NHÂN PHÚ COMPANY ",
+    title: "Software developer at DV KỸ THUẬT CÔNG NGHỆ NHÂN PHÚ ",
     description: "11/2022  - 5/2023",
     location: "Vietnam",
   },
