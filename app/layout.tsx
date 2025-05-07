@@ -4,13 +4,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Do Loi",
   metadataBase: new URL("https://hthanhlong97.ca"),
-  description: "Software Engineer - Open to work",
+  description: "Software Developer - Open to work",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
     title: "Do Loi",
-    description: "Software Engineer - Open to work",
+    description: "Software Developer - Open to work",
     images: [
       {
         url: "/images/personal.jpg",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Do Loi",
-    description: "Software Engineer - Open to work",
+    description: "Software Developer - Open to work",
     images: "/images/personal.jpg",
   },
 };

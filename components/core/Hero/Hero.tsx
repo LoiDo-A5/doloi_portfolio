@@ -15,7 +15,7 @@ export default function Hero() {
         <span className="block sm:inline">I&apos;m Do Loi!</span>
       </h1>
       <p className="text-3xl font-normal">
-        <span className="text-gray-500">I&apos;m a</span> Software engineer
+        <span className="text-gray-500">I&apos;m a</span> Software developer
         <span className="text-gray-500">
           <br /> with a passion for building{" "}
           <span className="text-orange-500">
