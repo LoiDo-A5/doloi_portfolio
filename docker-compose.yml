@@ -1,0 +1,52 @@
+services:
+  traefik:
+    image: traefik:v2.5
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=doloi@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" # Traefik dashboard
+    networks:
+      - app-network
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./acme.json:/acme.json"
+
+  react-app:
+    build:
+      context: ./react-code-editor
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.react-app.rule=Host(`codepin.doloi.ca`)"
+      - "traefik.http.routers.react-app.entrypoints=websecure"
+      - "traefik.http.routers.react-app.tls=true"
+      - "traefik.http.routers.react-app.tls.certresolver=myresolver"
+      - "traefik.http.services.react-app.loadbalancer.server.port=5173"
+    networks:
+      - app-network
+
+  next-app:
+    build:
+      context: ./modern-portfolio
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.next-app.rule=Host(`doloi.ca`)"
+      - "traefik.http.routers.next-app.entrypoints=websecure"
+      - "traefik.http.routers.next-app.tls=true"
+      - "traefik.http.routers.next-app.tls.certresolver=myresolver"
+      - "traefik.http.services.next-app.loadbalancer.server.port=3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
