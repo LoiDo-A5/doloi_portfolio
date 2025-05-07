@@ -17,21 +17,9 @@ interface Project {
 }
 
 const projects: Project[] = [
+
   {
     id: 1,
-    title: "Nike UI",
-    image: "/images/nike.jpeg",
-    live: "https://clone.hthanhlong97.ca/",
-    description: "A clone of the Nike website",
-    links: [
-      {
-        title: "Frontend",
-        url: "https://github.com/hthanhlong/nike-clone",
-      },
-    ],
-  },
-  {
-    id: 3,
     title: "Chat App",
     image: "/images/chat-app.jpeg",
     live: "https://www.discoverourstory.link/",
@@ -51,6 +39,20 @@ const projects: Project[] = [
       },
     ],
   },
+
+  {
+    id: 2,
+    title: "Dashboard cypress cucumber",
+    image: "/images/cy_cu.png",
+    live: "",
+    description: "Dashboard cypress cucumber",
+    links: [
+      {
+        title: "Frontend",
+        url: "https://github.com/LoiDo-A5/dashboard-cypress-cucumber",
+      },
+    ],
+  },
 ];
 
 export default function PersonalProjects() {
@@ -60,17 +62,18 @@ export default function PersonalProjects() {
         {projects.map((project) => (
           <Card className="w-full text-center p-2 border-0" key={project.title}>
             <Link href={project.live} target="_blank">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={200}
-                height={200}
-                className="w-full h-full object-cover hover:opacity-80 transition-all duration-300 cursor-pointer"
-              />
+              <div className="w-full h-[200px] relative">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover hover:opacity-80 transition-all duration-300 cursor-pointer rounded-lg"
+                />
+              </div>
             </Link>
-            <h1 className="text-sm lg:text-xs">{project.title}</h1>
+            <h1 className="text-sm lg:text-xs mt-2">{project.title}</h1>
             {project.links && project.links.length > 0 && (
-              <div className="flex gap-2 justify-center items-center bg-gray-100 py-1 rounded-lg">
+              <div className="flex gap-2 justify-center items-center bg-gray-100 py-1 rounded-lg mt-2">
                 {project.links.map((link) => (
                   <Link
                     key={link.title}
@@ -79,17 +82,14 @@ export default function PersonalProjects() {
                     rel="noopener noreferrer"
                     className="bg-gray-200 p-2 rounded-lg hover:bg-gray-300 transition-all"
                   >
-                    <Image
-                      src="/github.svg"
-                      alt="flag"
-                      width={24}
-                      height={24}
-                    />
+                    <Image src="/github.svg" alt="flag" width={24} height={24} />
                   </Link>
                 ))}
               </div>
             )}
           </Card>
+
+
         ))}
       </div>
     </CustomCard>
